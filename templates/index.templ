@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<script src="https://unpkg.com/htmx.org@2.0.3/dist/htmx.js" integrity="sha384-BBDmZzVt6vjz5YbQqZPtFZW82o8QotoM7RUp5xOxV3nSJ8u2pSdtzFAbGKzTlKtg" crossorigin="anonymous"></script>
+	<title>HTMX Test</title>
+	
+</head>
+<body>
+	<header>
+		<h1 id="application-title">Control Panel</h1>
+	</header>
+	<main>
+		<section>
+			<div class="container">
+				<label for="username">User:</label>
+				<input id="username" type="text" name="username" value={{ .Name }} />
+
+				<label for="access">Access Type:</label>
+				<input id="acess" type="text" name="access" value={{ .Type }} disabled="disabled" />
+			</div>
+
+			<button hx-post="/currenttime" hx-swap="beforeend" hx-target="#times">
+				Get Time
+			</button>
+		</section>
+
+		<section id="times"></section>
+	</main>
+</body>
+</html>
